@@ -1,4 +1,4 @@
-package jp.co.isken.ocu;
+package jp.co.isken.ocu.domain;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package jp.co.isken.ocu;
+package jp.co.isken.ocu.util;
 
 public class “üDƒGƒ‰[ extends Exception {
 

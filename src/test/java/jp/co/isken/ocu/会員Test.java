@@ -5,6 +5,13 @@ import static org.junit.Assert.fail;
 
 import java.util.Date;
 
+import jp.co.isken.ocu.domain.Auction;
+import jp.co.isken.ocu.domain.Market;
+import jp.co.isken.ocu.domain.会員;
+import jp.co.isken.ocu.util.Util;
+import jp.co.isken.ocu.util.入札エラー;
+import jp.co.isken.ocu.util.出品エラー;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 

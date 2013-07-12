@@ -1,4 +1,4 @@
-package jp.co.isken.ocu;
+package jp.co.isken.ocu.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

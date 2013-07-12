@@ -6,6 +6,13 @@ import static org.junit.Assert.fail;
 import java.util.Date;
 import java.util.List;
 
+import jp.co.isken.ocu.domain.Auction;
+import jp.co.isken.ocu.domain.Market;
+import jp.co.isken.ocu.domain.会員;
+import jp.co.isken.ocu.util.Util;
+import jp.co.isken.ocu.util.入札エラー;
+import jp.co.isken.ocu.util.出品エラー;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -38,7 +45,6 @@ public class MarketTest {
 	@Test
 	public void オークション() {
 		Market.setDate(Util.stringToDate("20130625000000"));
-
 		会員 森下 = new 会員("森下2");
 		森下.grant入札();
 		森下.grant出品();

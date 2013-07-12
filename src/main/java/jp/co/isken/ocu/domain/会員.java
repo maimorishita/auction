@@ -1,9 +1,13 @@
-package jp.co.isken.ocu;
+package jp.co.isken.ocu.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import jp.co.isken.ocu.util.Util;
+import jp.co.isken.ocu.util.入札エラー;
+import jp.co.isken.ocu.util.出品エラー;
 
 public class 会員 implements Serializable {
 
