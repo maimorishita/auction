@@ -30,8 +30,8 @@ public class Auction implements Serializable {
 		return itemName;
 	}
 
-	public Auction tender(long money, ‰ïˆõ “üDÒ) {
-		Tender tender = new Tender(money, “üDÒ);
+	public Auction tender(long money, ‰ïˆõ “üDÒ, Date date) {
+		Tender tender = new Tender(money, “üDÒ, date);
 		tenders.add(tender);
 		return this;
 	}
@@ -51,7 +51,7 @@ public class Auction implements Serializable {
 	public ‰ïˆõ getMember() {
 		return this.member;
 	}
-	
+
 	public void setTimeLimit(Date date){
 		this.timelimit = date;
 	}

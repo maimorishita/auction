@@ -12,16 +12,16 @@ import jp.co.isken.ocu.util.Util;
 import jp.co.isken.ocu.util.入札エラー;
 import jp.co.isken.ocu.util.出品エラー;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class 会員Test {
 
-	@BeforeClass
-	public static void データ初期化() {
-		Market.setup();
-		Market.setDate(Util.stringToDate("20130627000000"));
-	}
+	@Before
+    public void doBefore() {
+        Market.setup();
+        Market.setDate(Util.stringToDate("20130627000000"));
+    }
 
 	@Test
 	public void 会員名を登録する() {

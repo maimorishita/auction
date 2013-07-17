@@ -13,13 +13,13 @@ import jp.co.isken.ocu.util.Util;
 import jp.co.isken.ocu.util.入札エラー;
 import jp.co.isken.ocu.util.出品エラー;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class MarketTest {
 
-	@BeforeClass
-	public static void setup() {
+	@Before
+	public void setup() {
 		Market.setup();
 	}
 
@@ -30,6 +30,15 @@ public class MarketTest {
 		a.出品する("ipad2", "");
 		List<会員> m = Market.getMembers();
 		assertEquals(1, m.size());
+	}
+
+	@Test
+	public void 出品物名からオークションを取得できる() throws Exception {
+		会員 a = new 会員("森下1");
+		a.grant出品();
+		a.出品する("ipad2", "");
+		Auction m = Market.getAuction("ipad2");
+		assertEquals("ipad2", m.getName());
 	}
 
 	@Test

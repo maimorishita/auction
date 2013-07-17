@@ -1,18 +1,18 @@
 package jp.co.isken.ocu;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import jp.co.isken.ocu.domain.Auction;
 import jp.co.isken.ocu.domain.Market;
 import jp.co.isken.ocu.domain.‰ïˆõ;
 import jp.co.isken.ocu.util.Util;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AuctionTest {
 
-	@BeforeClass
-	public static void setup() {
+	@Before
+	public void setup() {
 		Market.setup();
 	}
 

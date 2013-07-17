@@ -9,14 +9,14 @@ import jp.co.isken.ocu.domain.Tender;
 import jp.co.isken.ocu.domain.‰ïˆõ;
 import jp.co.isken.ocu.util.Util;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class TenderTest {
 
-	@BeforeClass
-	public static void setup(){
+	@Before
+	public void setup(){
 		Market.setup();
 	}
 

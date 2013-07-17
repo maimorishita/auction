@@ -1,6 +1,7 @@
 package jp.co.isken.ocu.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Tender implements Serializable{
@@ -11,14 +12,19 @@ public class Tender implements Serializable{
 	private static final long serialVersionUID = -3548491193461037272L;
 	private long amount;
 	private ‰ïˆõ “üDÒ ;
+	private Date date;
 
 	public Tender(long money, ‰ïˆõ “üDÒ) {
 		this.amount = money;
 		this.“üDÒ = “üDÒ;
+		date = Market.getDate();
 	}
 
-	public Tender() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	public Tender(long money, ‰ïˆõ “üDÒ, Date date) {
+		amount = money;
+		this.“üDÒ = “üDÒ;
+		this.date = date;
+
 	}
 
 	public long getAmount() {
@@ -34,4 +40,11 @@ public class Tender implements Serializable{
 		return a.getTenders();
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(){
+		date = Market.getDate();
+	}
 }

@@ -9,9 +9,21 @@ public class Market {
 
 	private static Date date;
 	private static List<‰ïˆõ> members = new ArrayList<‰ïˆõ>();
+	private static List<Auction> auctions = new ArrayList<Auction>();
 
 	public static List<‰ïˆõ> getMembers() {
 		return Market.members;
+	}
+
+	public static void update(‰ïˆõ member, Auction auction) {
+		update(member);
+		for (Iterator<Auction> iterator = auctions.iterator(); iterator.hasNext();) {
+			Auction k = iterator.next();
+			if (member.getName().equals(k.getName())) {
+				iterator.remove();
+			}
+		}
+		auctions.add(auction);
 	}
 
 	public static void update(‰ïˆõ member) {
@@ -29,11 +41,9 @@ public class Market {
 	}
 
 	public static Auction getAuction(String itemName) {
-		for (‰ïˆõ e : members) {
-			for (Auction a : e.getAuctions()) {
-				if (a.getName().equals(itemName)) {
-					return a;
-				}
+		for (Auction a : auctions) {
+			if (a.getName().equals(itemName)) {
+				return a;
 			}
 		}
 		return new Auction();
@@ -42,6 +52,7 @@ public class Market {
 	public static void setup() {
 		members = new ArrayList<‰ïˆõ>();
 		date = null;
+		auctions = new ArrayList<Auction>();
 	}
 
 	public static void setDate(Date date1) {

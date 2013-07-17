@@ -53,7 +53,7 @@ public class 会員 implements Serializable {
 		}
 		if (Market.getAuction(itemName).getName().equals(itemName)) {
 			throw new 出品エラー("商品名が重複しています。");
-		}		
+		}
 		if ("".equals(itemName)) {
 			throw new 出品エラー("商品を指定してください。");
 		}
@@ -62,7 +62,7 @@ public class 会員 implements Serializable {
 		Auction auction = new Auction(itemName, this,
 				Util.stringToDate(datetime));
 		auctions.add(auction);
-		Market.update(this);
+		Market.update(this, auction);
 	}
 
 	public void 入札する(String itemName, long money, String datestr) throws 入札エラー {
@@ -81,12 +81,12 @@ public class 会員 implements Serializable {
 			if (money <= a.getLastTender().getAmount()) {
 				throw new 入札エラー("最高入札額よりも高い金額を指定してください。");
 			} else {
-				a.tender(money, this);
-				Market.update(this);
+				a.tender(money, this, date);
+				Market.update(this,a);
 			}
 		} else {
-			a.tender(money, this);
-			Market.update(this);
+			a.tender(money, this, date);
+			Market.update(this,a);
 		}
 	}
 
