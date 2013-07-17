@@ -33,6 +33,7 @@ public class Auction implements Serializable {
 	public Auction tender(long money, ‰ïˆõ “üDÒ, Date date) {
 		Tender tender = new Tender(money, “üDÒ, date);
 		tenders.add(tender);
+		Market.update(“üDÒ,this);
 		return this;
 	}
 

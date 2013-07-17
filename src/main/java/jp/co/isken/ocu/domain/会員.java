@@ -82,11 +82,9 @@ public class ‰ïˆõ implements Serializable {
 				throw new “üDƒGƒ‰[("Å‚“üDŠz‚æ‚è‚à‚‚¢‹àŠz‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B");
 			} else {
 				a.tender(money, this, date);
-				Market.update(this,a);
 			}
 		} else {
 			a.tender(money, this, date);
-			Market.update(this,a);
 		}
 	}
 
