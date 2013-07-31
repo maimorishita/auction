@@ -134,8 +134,8 @@ public class ‰ïˆõTest {
 		c.grant“üD();
 		c.“üD‚·‚é("ipad3", 200, "20130629010000");
 
-		Item Item = Item.getItem("ipad3");
-		assertEquals(Item.getLastTender().get“üDÒ().getName(), "‚à‚è‚«");
+		Item item = Item.getItem("ipad3");
+		assertEquals(item.getLastTender().get“üDÒ().getName(), "‚à‚è‚«");
 	}
 
 	@Test
@@ -176,8 +176,8 @@ public class ‰ïˆõTest {
 			assertEquals("Å‚“üDŠz‚æ‚è‚à‚‚¢‹àŠz‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B", e.getMessage());
 		}
 
-		Item Item = Item.getItem("ipadmai");
-		assertEquals(Item.getLastTender().get“üDÒ().getName(), "‚Ù‚»‚´‚ía");
+		Item item = Item.getItem("ipadmai");
+		assertEquals(item.getLastTender().get“üDÒ().getName(), "‚Ù‚»‚´‚ía");
 	}
 
 	@Test
