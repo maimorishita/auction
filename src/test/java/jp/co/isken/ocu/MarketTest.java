@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.util.Date;
 
-import jp.co.isken.ocu.domain.Auction;
+import jp.co.isken.ocu.domain.Item;
 import jp.co.isken.ocu.domain.Market;
 import jp.co.isken.ocu.domain.‰ïˆõ;
 import jp.co.isken.ocu.util.Util;
@@ -101,7 +101,7 @@ public class MarketTest {
 			assertEquals("“üDŠÔŠO‚Å‚·B", e.getMessage());
 		}
 
-		Auction target = Auction.getAuction("MacBookAir");
+		Item target = Item.getItem("MacBookAir");
 		assertEquals("X–Ø", target.getLastTender().get“üDÒ().getName());
 		assertEquals(300000, target.getLastTender().getAmount());
 	}

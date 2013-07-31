@@ -14,7 +14,7 @@ public class 会員 {
 	private String name;
 	private boolean 出品権限 = false;
 	private boolean 入札権限 = false;
-	private List<Auction> auctions = new ArrayList<Auction>();
+	private List<Item> Items = new ArrayList<Item>();
 	private static List<会員> memberList = new ArrayList<会員>();
 
 	public 会員(String name) {
@@ -48,36 +48,36 @@ public class 会員 {
 		if (this.出品権限 == false) {
 			throw new 出品エラー("出品権限がありません。");
 		}
-		if (Auction.getAuction(itemName).getName().equals(itemName)) {
+		if (Item.getItem(itemName).getName().equals(itemName)) {
 			throw new 出品エラー("商品名が重複しています。");
 		}
 		if ("".equals(itemName)) {
 			throw new 出品エラー("商品を指定してください。");
 		}
 
-		Auction auction = new Auction(itemName, this,
+		Item Item = new Item(itemName, this,
 				Util.stringToDate(datetime));
-		auctions.add(auction);
-		会員.update(this, auction);
+		Items.add(Item);
+		会員.update(this, Item);
 	}
 	
-	public static void update(会員 member, Auction auction) {
+	public static void update(会員 member, Item Item) {
 		会員.update(member);
-		for (Iterator<Auction> iterator = Auction.iterator(); iterator
+		for (Iterator<Item> iterator = Item.iterator(); iterator
 				.hasNext();) {
-			Auction k = iterator.next();
+			Item k = iterator.next();
 			if (member.getName().equals(k.getName())) {
 				iterator.remove();
 			}
 		}
-		Auction.add(auction);
+		Item.add(Item);
 	}
 
 	public void 入札する(String itemName, long money, String datestr) throws 入札エラー {
 		if (this.入札権限 == false) {
 			throw new 入札エラー("入札権限がありません。");
 		}
-		Auction a = Auction.getAuction(itemName);
+		Item a = Item.getItem(itemName);
 		if (a.getMember().getName().equals(this.getName())) {
 			throw new 入札エラー("出品者は入札できません。");
 		}
@@ -96,26 +96,26 @@ public class 会員 {
 		}
 	}
 
-	public Auction getSelfAuction(String itemName) {
-		for (Auction auction : this.auctions) {
-			if (auction.getName().equals(itemName)) {
-				return auction;
+	public Item getSelfItem(String itemName) {
+		for (Item Item : this.Items) {
+			if (Item.getName().equals(itemName)) {
+				return Item;
 			}
 		}
-		return new Auction();
+		return new Item();
 	}
 
-	public void setTenders(Auction auction, List<Tender> tenders) {
-		for (Auction a : this.auctions) {
-			if (a.equals(auction)) {
+	public void setTenders(Item Item, List<Tender> tenders) {
+		for (Item a : this.Items) {
+			if (a.equals(Item)) {
 				a.setTenders(tenders);
 			}
 		}
 
 	}
 
-	public List<Auction> getAuctions() {
-		return this.auctions;
+	public List<Item> getItems() {
+		return this.Items;
 	}
 
 	public static void init() {

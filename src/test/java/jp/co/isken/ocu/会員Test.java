@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import java.util.Date;
 import java.util.List;
 
-import jp.co.isken.ocu.domain.Auction;
+import jp.co.isken.ocu.domain.Item;
 import jp.co.isken.ocu.domain.Market;
 import jp.co.isken.ocu.domain.‰ïˆõ;
 import jp.co.isken.ocu.util.Util;
@@ -61,11 +61,11 @@ public class ‰ïˆõTest {
 		‰ïˆõ a = new ‰ïˆõ("X‰º7");
 		a.granto•i();
 		a.o•i‚·‚é("ipad1", "20130630120000");
-		assertEquals(1, a.getAuctions().size());
-		assertEquals("ipad1", a.getAuctions().get(0).getName());
+		assertEquals(1, a.getItems().size());
+		assertEquals("ipad1", a.getItems().get(0).getName());
 
 		Date targetdate = Util.stringToDate("20130630120000");
-		assertEquals(targetdate, a.getAuctions().get(0).getTimeLimit());
+		assertEquals(targetdate, a.getItems().get(0).getTimeLimit());
 		Market.setup();
 	}
 
@@ -134,8 +134,8 @@ public class ‰ïˆõTest {
 		c.grant“üD();
 		c.“üD‚·‚é("ipad3", 200, "20130629010000");
 
-		Auction auction = Auction.getAuction("ipad3");
-		assertEquals(auction.getLastTender().get“üDÒ().getName(), "‚à‚è‚«");
+		Item Item = Item.getItem("ipad3");
+		assertEquals(Item.getLastTender().get“üDÒ().getName(), "‚à‚è‚«");
 	}
 
 	@Test
@@ -176,8 +176,8 @@ public class ‰ïˆõTest {
 			assertEquals("Å‚“üDŠz‚æ‚è‚à‚‚¢‹àŠz‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B", e.getMessage());
 		}
 
-		Auction auction = Auction.getAuction("ipadmai");
-		assertEquals(auction.getLastTender().get“üDÒ().getName(), "‚Ù‚»‚´‚ía");
+		Item Item = Item.getItem("ipadmai");
+		assertEquals(Item.getLastTender().get“üDÒ().getName(), "‚Ù‚»‚´‚ía");
 	}
 
 	@Test

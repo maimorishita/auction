@@ -13,7 +13,7 @@ public class Market {
 	public static void setup() {
 		‰ïˆõ.init();
 		date = null;
-		Auction.init();
+		Item.init();
 	}
 
 	public static void setDate(Date _date) {

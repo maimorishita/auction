@@ -5,21 +5,21 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class Auction {
+public class Item {
 
 	private String itemName;
 	private ‰ïˆõ member;
 	private List<Tender> tenders = new ArrayList<Tender>();
 	private Date timelimit;
-	private static List<Auction> itemList = new ArrayList<Auction>();
+	private static List<Item> itemList = new ArrayList<Item>();
 
-	public Auction(String itemName, ‰ïˆõ member, Date date) {
+	public Item(String itemName, ‰ïˆõ member, Date date) {
 		this.itemName = itemName;
 		this.member = member;
 		this.timelimit = date;
 	}
 
-	public Auction() {
+	public Item() {
 		this.itemName = "";
 	}
 
@@ -27,7 +27,7 @@ public class Auction {
 		return itemName;
 	}
 
-	public Auction tender(long money, ‰ïˆõ “üŽDŽÒ, Date date) {
+	public Item tender(long money, ‰ïˆõ “üŽDŽÒ, Date date) {
 		Tender tender = new Tender(money, “üŽDŽÒ, date);
 		tenders.add(tender);
 		‰ïˆõ.update(“üŽDŽÒ, this);
@@ -59,26 +59,26 @@ public class Auction {
 	}
 
 	public static void init() {
-		itemList = new ArrayList<Auction>();
+		itemList = new ArrayList<Item>();
 	}
 
-	public static Iterator<Auction> iterator() {
+	public static Iterator<Item> iterator() {
 		return itemList.iterator();
 	}
 
-	public static void add(Auction auction) {
-		itemList.add(auction);
+	public static void add(Item Item) {
+		itemList.add(Item);
 	}
 
-	public static Auction getAuction(String itemName) {
-		Iterator<Auction> iter = Auction.iterator();
+	public static Item getItem(String itemName) {
+		Iterator<Item> iter = Item.iterator();
 		while (iter.hasNext()) {
-			Auction target = iter.next();
+			Item target = iter.next();
 			if (target.getName().equals(itemName)) {
 				return target;
 			}
 		}
-		return new Auction();
+		return new Item();
 	}
 
 }

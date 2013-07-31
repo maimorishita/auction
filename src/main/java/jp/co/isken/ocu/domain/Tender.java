@@ -36,7 +36,7 @@ public class Tender implements Serializable{
 	}
 
 	public static List<Tender> getTenders(String itemName) {
-		Auction a = Auction.getAuction(itemName);
+		Item a = Item.getItem(itemName);
 		return a.getTenders();
 	}
 
