@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.Date;
-import java.util.List;
 
 import jp.co.isken.ocu.domain.Auction;
 import jp.co.isken.ocu.domain.Market;
@@ -21,24 +20,6 @@ public class MarketTest {
 	@Before
 	public void setup() {
 		Market.setup();
-	}
-
-	@Test
-	public void 会員が取得できる() throws Exception {
-		会員 a = new 会員("森下1");
-		a.grant出品();
-		a.出品する("ipad2", "");
-		List<会員> m = Market.getMembers();
-		assertEquals(1, m.size());
-	}
-
-	@Test
-	public void 出品物名からオークションを取得できる() throws Exception {
-		会員 a = new 会員("森下1");
-		a.grant出品();
-		a.出品する("ipad2", "");
-		Auction m = Market.getAuction("ipad2");
-		assertEquals("ipad2", m.getName());
 	}
 
 	@Test
@@ -120,7 +101,7 @@ public class MarketTest {
 			assertEquals("入札時間外です。", e.getMessage());
 		}
 
-		Auction target = Market.getAuction("MacBookAir");
+		Auction target = Auction.getAuction("MacBookAir");
 		assertEquals("森木", target.getLastTender().get入札者().getName());
 		assertEquals(300000, target.getLastTender().getAmount());
 	}

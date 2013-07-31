@@ -17,6 +17,15 @@ public class AuctionTest {
 	}
 
 	@Test
+	public void 出品物名からオークションを取得できる() throws Exception {
+		会員 a = new 会員("森下1");
+		a.grant出品();
+		a.出品する("ipad2", "");
+		Auction m = Auction.getAuction("ipad2");
+		assertEquals("ipad2", m.getName());
+	}
+	
+	@Test
 	public void オークションには商品名とIDがある() {
 		会員 m = new 会員("山田");
 		Auction a = new Auction("ipad", m, Util.stringToDate("20120101120000"));

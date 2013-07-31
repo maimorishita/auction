@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.Date;
+import java.util.List;
 
 import jp.co.isken.ocu.domain.Auction;
 import jp.co.isken.ocu.domain.Market;
@@ -18,15 +19,24 @@ import org.junit.Test;
 public class ‰ïˆõTest {
 
 	@Before
-    public void doBefore() {
-        Market.setup();
-        Market.setDate(Util.stringToDate("20130627000000"));
-    }
+	public void doBefore() {
+		Market.setup();
+		Market.setDate(Util.stringToDate("20130627000000"));
+	}
 
 	@Test
 	public void ‰ïˆõ–¼‚ğ“o˜^‚·‚é() {
 		‰ïˆõ a = new ‰ïˆõ("X‰º4");
 		assertEquals("X‰º4", a.getName());
+	}
+
+	@Test
+	public void ‰ïˆõ‚ªæ“¾‚Å‚«‚é() throws Exception {
+		‰ïˆõ a = new ‰ïˆõ("X‰º1");
+		a.granto•i();
+		a.o•i‚·‚é("ipad2", "");
+		List<‰ïˆõ> m = ‰ïˆõ.getAll();
+		assertEquals(1, m.size());
 	}
 
 	@Test
@@ -124,7 +134,7 @@ public class ‰ïˆõTest {
 		c.grant“üD();
 		c.“üD‚·‚é("ipad3", 200, "20130629010000");
 
-		Auction auction = Market.getAuction("ipad3");
+		Auction auction = Auction.getAuction("ipad3");
 		assertEquals(auction.getLastTender().get“üDÒ().getName(), "‚à‚è‚«");
 	}
 
@@ -166,7 +176,7 @@ public class ‰ïˆõTest {
 			assertEquals("Å‚“üDŠz‚æ‚è‚à‚‚¢‹àŠz‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B", e.getMessage());
 		}
 
-		Auction auction = Market.getAuction("ipadmai");
+		Auction auction = Auction.getAuction("ipadmai");
 		assertEquals(auction.getLastTender().get“üDÒ().getName(), "‚Ù‚»‚´‚ía");
 	}
 
