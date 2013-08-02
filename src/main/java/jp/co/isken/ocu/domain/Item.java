@@ -8,29 +8,34 @@ import java.util.List;
 public class Item {
 
 	private String itemName;
-	private ‰ïˆõ member;
+	private Member member;
 	private List<Tender> tenders = new ArrayList<Tender>();
+	private Tender successfulTender;
 	private Date timelimit;
+	private int reservePrice;
+	private boolean isCancel;
 	private static List<Item> itemList = new ArrayList<Item>();
 
-	public Item(String itemName, ‰ïˆõ member, Date date) {
+	public Item(String itemName, Member member, Date date, int reservePrice) {
 		this.itemName = itemName;
 		this.member = member;
 		this.timelimit = date;
+		this.reservePrice = reservePrice;
+		this.isCancel = false;
 	}
 
 	public Item() {
-		this.itemName = "";
+		itemName = "";
 	}
 
 	public String getName() {
 		return itemName;
 	}
 
-	public Item tender(long money, ‰ïˆõ “üŽDŽÒ, Date date) {
+	public Item tender(long money, Member “üŽDŽÒ, Date date) {
 		Tender tender = new Tender(money, “üŽDŽÒ, date);
 		tenders.add(tender);
-		‰ïˆõ.update(“üŽDŽÒ, this);
+		Member.update(“üŽDŽÒ, this);
 		return this;
 	}
 
@@ -46,7 +51,7 @@ public class Item {
 		this.tenders = tenders;
 	}
 
-	public ‰ïˆõ getMember() {
+	public Member getMember() {
 		return this.member;
 	}
 
@@ -81,4 +86,23 @@ public class Item {
 		return new Item();
 	}
 
+	public Tender getSuccessfulTender() {
+		return this.successfulTender;
+	}
+
+	public boolean isCancel() {
+		return this.isCancel;
+	}
+
+	public long getReservePrice() {
+		return this.reservePrice;
+	}
+
+	public void setisCancel(boolean cancel) {
+		this.isCancel = cancel;
+	}
+
+	public void setSuccessfulTender(Tender lastTender) {
+		this.successfulTender = lastTender;
+	}
 }

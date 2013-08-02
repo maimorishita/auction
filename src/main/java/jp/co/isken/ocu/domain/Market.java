@@ -6,12 +6,12 @@ public class Market {
 
 	private static Date date;
 
-	public static void add(‰ïˆõ member) {
-		‰ïˆõ.add(member);
+	public static void add(Member member) {
+		Member.add(member);
 	}
 
 	public static void setup() {
-		‰ïˆõ.init();
+		Member.init();
 		date = null;
 		Item.init();
 	}

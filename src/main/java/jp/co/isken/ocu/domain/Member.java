@@ -9,15 +9,15 @@ import jp.co.isken.ocu.util.Util;
 import jp.co.isken.ocu.util.入札エラー;
 import jp.co.isken.ocu.util.出品エラー;
 
-public class 会員 {
+public class Member {
 
 	private String name;
 	private boolean 出品権限 = false;
 	private boolean 入札権限 = false;
 	private List<Item> Items = new ArrayList<Item>();
-	private static List<会員> memberList = new ArrayList<会員>();
+	private static List<Member> memberList = new ArrayList<Member>();
 
-	public 会員(String name) {
+	public Member(String name) {
 		this.name = name;
 		Market.add(this);
 	}
@@ -34,17 +34,9 @@ public class 会員 {
 		return 入札権限;
 	}
 
-	public void grant出品() {
-		出品権限 = true;
-		会員.update(this);
-	}
+	
 
-	public void grant入札() {
-		入札権限 = true;
-		会員.update(this);
-	}
-
-	public void 出品する(String itemName, String datetime) throws 出品エラー {
+	public void 出品する(String itemName, String datetime, int reservePrice) throws 出品エラー {
 		if (this.出品権限 == false) {
 			throw new 出品エラー("出品権限がありません。");
 		}
@@ -55,16 +47,14 @@ public class 会員 {
 			throw new 出品エラー("商品を指定してください。");
 		}
 
-		Item Item = new Item(itemName, this,
-				Util.stringToDate(datetime));
+		Item Item = new Item(itemName, this, Util.stringToDate(datetime), reservePrice);
 		Items.add(Item);
-		会員.update(this, Item);
+		Member.update(this, Item);
 	}
-	
-	public static void update(会員 member, Item Item) {
-		会員.update(member);
-		for (Iterator<Item> iterator = Item.iterator(); iterator
-				.hasNext();) {
+
+	public static void update(Member member, Item Item) {
+		Member.update(member);
+		for (Iterator<Item> iterator = Item.iterator(); iterator.hasNext();) {
 			Item k = iterator.next();
 			if (member.getName().equals(k.getName())) {
 				iterator.remove();
@@ -119,28 +109,36 @@ public class 会員 {
 	}
 
 	public static void init() {
-		memberList = new ArrayList<会員>();
+		memberList = new ArrayList<Member>();
 	}
 
-	public static List<会員> getAll() {
+	public static List<Member> getAll() {
 		return memberList;
 	}
 
-	public static Iterator<会員> iterator() {
+	public static Iterator<Member> iterator() {
 		return memberList.iterator();
 	}
-	
-	public static void update(会員 member) {
-		for (Iterator<会員> iterator = 会員.iterator(); iterator.hasNext();) {
-			会員 k = iterator.next();
+
+	public static void update(Member member) {
+		for (Iterator<Member> iterator = Member.iterator(); iterator.hasNext();) {
+			Member k = iterator.next();
 			if (member.getName().equals(k.getName())) {
 				iterator.remove();
 			}
 		}
-		会員.add(member);
+		Member.add(member);
 	}
 
-	public static void add(会員 member) {
+	public static void add(Member member) {
 		memberList.add(member);
+	}
+
+	public void set出品権限(boolean b) {
+		this.出品権限 = b;
+	}
+	
+	public void set入札権限(boolean b) {
+		this.入札権限 = b;
 	}
 }

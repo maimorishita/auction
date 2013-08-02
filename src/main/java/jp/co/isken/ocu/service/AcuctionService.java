@@ -1,4 +1,4 @@
-package jp.co.isken.ocu.util.service;
+package jp.co.isken.ocu.service;
 
 import java.util.List;
 

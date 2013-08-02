@@ -1,5 +1,4 @@
-package jp.co.isken.ocu.util.service;
-
+package jp.co.isken.ocu;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -9,30 +8,39 @@ import java.util.List;
 
 import jp.co.isken.ocu.domain.Market;
 import jp.co.isken.ocu.domain.Tender;
-import jp.co.isken.ocu.domain.‰ïˆõ;
+import jp.co.isken.ocu.domain.Member;
+import jp.co.isken.ocu.service.AcuctionService;
+import jp.co.isken.ocu.service.sample;
+import jp.co.isken.ocu.service.‰ïˆõFacade;
 import jp.co.isken.ocu.util.Util;
 import jp.co.isken.ocu.util.“üDƒGƒ‰[;
 import jp.co.isken.ocu.util.o•iƒGƒ‰[;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class AcuctionServiceTest {
+	
+	@Before
+	public void setup() {
+		Market.setup();
+	}
 
 	@Test
 	public void ƒgƒŒƒ“ƒh‚ğæ“¾‚·‚é() {
 		Market.setDate(Util.stringToDate("20130625000000"));
-		‰ïˆõ X‰º = new ‰ïˆõ("X‰º2");
-		X‰º.grant“üD();
-		X‰º.granto•i();
+		Member X‰º = new Member("X‰º2");
+		‰ïˆõFacade.grant“üD(X‰º);
+		‰ïˆõFacade.granto•i(X‰º);
 
-		‰ïˆõ ×àV = new ‰ïˆõ("×àV");
-		×àV.grant“üD();
+		Member ×àV = new Member("×àV");
+		‰ïˆõFacade.grant“üD(×àV);
 
-		‰ïˆõ X–Ø = new ‰ïˆõ("X–Ø");
-		X–Ø.grant“üD();
+		Member X–Ø = new Member("X–Ø");
+		‰ïˆõFacade.grant“üD(X–Ø);
 
 		try {
-			X‰º.o•i‚·‚é("MacBookAir", "20130630000000");
+			X‰º.o•i‚·‚é("MacBookAir", "20130630000000", 200000);
 		} catch (o•iƒGƒ‰[ e) {
 			fail();
 		}
@@ -87,10 +95,6 @@ public class AcuctionServiceTest {
 		sample s = new sample();
 		s.main(targets);
 
-
 	}
-
-
-
 
 }
